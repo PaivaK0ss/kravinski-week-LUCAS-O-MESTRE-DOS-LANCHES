@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUCAS, O MESTRE DOS LANCHES DOS GAMES</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="menu">
+        <h1>LUCAS</h1>
+        <h2>O MESTRE DOS LANCHES DOS GAMES</h2>
+        <button id="playButton">
+            JOGAR
+        </button>
+    </div>
+
+    <div id="hud">
+        <div>⏳ <span id="timer">60</span></div>
+        <div>⭐ <span id="score">0</span></div>
+        <div>🏆 <span id="record">0</span></div>
+    </div>
+
+    <canvas id="game" width="900" height="600"></canvas>
+
+    <div id="controls">
+        <button id="left">⬅️</button>
+        <button id="right">➡️</button>
+    </div>
+
+    <div id="gameOver">
+        <h1>GAME OVER</h1>
+        <h2>Pontuação:
+            <span id="finalScore"></span>
+        </h2>
+        <button onclick="restart()">
+            Jogar Novamente
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

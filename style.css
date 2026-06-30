@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    background: #00ca33;
+    overflow: hidden;
+    font-family: Arial;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+    background: #2dfdda;
+    border: 5px solid black;
+}
+
+#menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #0df165;
+    z-index: 10;
+}
+
+#playButton {
+    font-size: 30px;
+    padding: 15px 40px;
+    cursor: pointer;
+}
+
+#hud {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    gap: 40px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#controls {
+    position: absolute;
+    bottom: 200px;
+    width: 100%;
+    display: none;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+#controls button {
+    width: 120px;
+    height: 120px;
+    font-size: 50px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#gameOver {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, .75);
+    color: white;
+    font-size: 30px;
+}
