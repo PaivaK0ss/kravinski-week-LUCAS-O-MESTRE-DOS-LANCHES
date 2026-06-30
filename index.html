@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
     <div id="menu">
         <h1>LUCAS</h1>
         <h2>O MESTRE DOS LANCHES DOS GAMES</h2>
@@ -26,21 +25,27 @@
     <canvas id="game" width="900" height="600"></canvas>
 
     <div id="controls">
-        <button id="left">⬅️</button>
-        <button id="right">➡️</button>
+        <button id="leftButton">⬅️</button>
+        <button id="rightButton">➡️</button>
     </div>
 
     <div id="gameOver">
         <h1>GAME OVER</h1>
-        <h2>Pontuação:
-            <span id="finalScore"></span>
+        <h2>
+            Pontuação:
+            <span id="finalScore">0</span>
         </h2>
-        <button onclick="restart()">
+        <button id="restartButton">
             Jogar Novamente
         </button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/assets.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/item.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
