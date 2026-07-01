@@ -1,3 +1,17 @@
+/* IMPORT DE FONTES */
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+* {
+    font-family: "Luckiest Guy", cursive;
+    transition: 300ms ease-in-out;
+    font-weight: 100;
+    margin: 0;
+}
+
+h3 {
+    font-size: 30px;
+}
+
 body {
     margin: 0;
     background: #00ca33;
@@ -22,12 +36,37 @@ canvas {
     align-items: center;
     background: #0df165;
     z-index: 10;
+    h1 {
+        margin: 0;
+        font-size: 80px;    
+    };
+    h2 {
+        font-weight: lighter;
+        font-size: 64px;
+        margin: 0;
+    }
 }
 
-#playButton {
+#play, #playButton, #restartButton {
     font-size: 30px;
     padding: 15px 40px;
     cursor: pointer;
+    border: #008d36;
+    border-radius: 1000px;
+    background: #008d36;
+    color: white;
+    font-weight: 100;
+}
+
+#play:hover, #playButton:hover, #restartButton:hover {
+    scale: 1.2;
+    box-shadow: inset 0 0 20px 5px #0e3a1f;
+}
+
+#gameOverlay {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #hud {
@@ -35,7 +74,7 @@ canvas {
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    display: none;
+    display: flex;
     gap: 40px;
     font-size: 30px;
     font-weight: bold;
@@ -55,8 +94,14 @@ canvas {
     width: 120px;
     height: 120px;
     font-size: 50px;
-    border-radius: 20px;
+    border-radius: 100px;
     cursor: pointer;
+    background-image: url(assets/imagens/setinha.png);
+    background-size: cover;
+}
+
+#leftButton {
+    rotate: 180deg;
 }
 
 #gameOver {
@@ -70,4 +115,37 @@ canvas {
     background: rgba(0, 0, 0, .75);
     color: white;
     font-size: 30px;
+    z-index: 99;
+    h2 {
+        margin-bottom: 10px;
+    }
+}
+
+#tutorial {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    background-color: #0df165;
+    z-index: 99;
+    border: solid 2px black;
+    border-radius: 25px;
+    padding: 25px;
+    h1 {
+        font-size: 54px;
+    };
+    h2 {
+        font-size: 30px;
+        margin: 0 50px 10px;
+        font-weight: 100;
+    };
+    button {
+        position: relative;
+        width: 500px;
+    }
 }

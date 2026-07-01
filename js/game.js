@@ -8,10 +8,10 @@ const CONFIG = {
     largura: 900,
     altura: 600,
     tempoInicial: 60,
-    velocidadeLucas: 7,
-    tamanhoItem: 60,
+    velocidadeLucas: 8,
+    tamanhoItem: 80,
     velocidadeItem: 4,
-    intervaloSpawn: 1000
+    intervaloSpawn: 800
 };
 
 // CANVAS
@@ -23,6 +23,8 @@ const menu = document.getElementById("menu");
 const hud = document.getElementById("hud");
 const controls = document.getElementById("controls");
 const gameOver = document.getElementById("gameOver");
+const tutorial = document.getElementById("tutorial");
+const play = document.getElementById("play");
 
 const timerText = document.getElementById("timer");
 const scoreText = document.getElementById("score");
@@ -32,12 +34,23 @@ const finalScore = document.getElementById("finalScore");
 const playButton = document.getElementById("playButton");
 const restartButton = document.getElementById("restartButton");
 
+const hamburguerScore = document.getElementById("hamburguerScore");
+const milkshakeScore = document.getElementById("milkshakeScore");
+const hotdogScore = document.getElementById("hotdogScore");
+const aylaScore = document.getElementById("aylaScore");
+const rocketScore = document.getElementById("rocketScore");
+const ninaScore = document.getElementById("ninaScore");
+
 // ===========================================
 // GAME
 // ===========================================
 const Game = {
     running: false,
     score: 0,
+    hamburguerScore: 0,
+    milkshakeScore: 0,
+    hotdogScore: 0,
+    ninaScore: 0,
     timer: CONFIG.tempoInicial,
     record: Number(localStorage.getItem("record")) || 0,
     items: [],
@@ -49,15 +62,27 @@ scoreText.textContent = Game.score;
 timerText.textContent = Game.timer;
 
 // ===========================================
+// TUTORIAL
+// ===========================================
+function startTtutorial(){
+    tutorial.style.display = "flex";
+}
+
+// ===========================================
 // INICIAR
 // ===========================================
 function startGame(){
+    tutorial.style.display = "none";
     menu.style.display = "none";
     gameOver.style.display = "none";
     hud.style.display = "flex";
     controls.style.display = "flex";
     Game.running = true;
     Game.score = 0;
+    Game.hamburguerScore = 0;
+    Game.milkshakeScore = 0;
+    Game.hotdogScore = 0;
+    Game.ninaScore = 0;
     Game.timer = CONFIG.tempoInicial;
     Game.items = [];
     Game.lastSpawn = 0;
@@ -78,6 +103,16 @@ function endGame(){
         localStorage.setItem("record", Game.record);
         recordText.textContent = Game.record;
     }
+    hamburguerScore.textContent = Game.hamburguerScore;
+    milkshakeScore.textContent = Game.milkshakeScore;
+    hotdogScore.textContent = Game.hotdogScore;
+    ninaScore.textContent = Game.ninaScore;
+    if(lendarios.Ayla == true){
+        aylaScore.textContent = "Pegou a Ayla!!!!!!"
+    }
+    if(lendarios.Rocket == true){
+        rocketScore.textContent = "Pegou o Rocket!!!!!!"
+    }
     gameOver.style.display = "flex";
 }
 
@@ -96,5 +131,6 @@ setInterval(()=>{
 // ===========================================
 // BOTÕES
 // ===========================================
+play.addEventListener("click", startTtutorial);
 playButton.addEventListener("click", startGame);
 restartButton.addEventListener("click", startGame);

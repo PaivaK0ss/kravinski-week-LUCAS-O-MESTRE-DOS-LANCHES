@@ -10,33 +10,52 @@
 <body>
     <div id="menu">
         <h1>LUCAS</h1>
-        <h2>O MESTRE DOS LANCHES DOS GAMES</h2>
-        <button id="playButton">
+        <h2>O MESTRE DOS LANCHES</h2>
+        <button id="play">
             JOGAR
         </button>
     </div>
 
-    <div id="hud">
-        <div>⏳ <span id="timer">60</span></div>
-        <div>⭐ <span id="score">0</span></div>
-        <div>🏆 <span id="record">0</span></div>
+    <div id="gameOverlay">
+        <div id="hud">
+            <div>Tempo:<span id="timer">60</span></div>
+            <div>Pontuação:<span id="score">0</span></div>
+            <div>Maior Pontuação:<span id="record">0</span></div>
+        </div>
+    
+        <canvas id="game" width="900" height="600"></canvas>
     </div>
 
-    <canvas id="game" width="900" height="600"></canvas>
-
     <div id="controls">
-        <button id="leftButton">⬅️</button>
-        <button id="rightButton">➡️</button>
+        <button id="leftButton"><img src="" alt=""></button>
+        <button id="rightButton"><img src="" alt=""></button>
     </div>
 
     <div id="gameOver">
-        <h1>GAME OVER</h1>
+        <h1>ACABOU, MANO!</h1>
         <h2>
             Pontuação:
             <span id="finalScore">0</span>
         </h2>
+        <h3>Hambúrgueres: <span id="hamburguerScore">0</span></h3>
+        <h3>Milk Shakes: <span id="milkshakeScore">0</span></h3>
+        <h3>CACHORROS QUENTES: <span id="hotdogScore">0</span></h3>
+        <h3>Ayla: <span id="aylaScore">Não pegou:(</span></h3>
+        <h3>Rocket: <span id="rocketScore">Não pegou:(</span></h3>
+        <h3>Ninas: <span id="ninaScore">0</span></h3>
         <button id="restartButton">
             Jogar Novamente
+        </button>
+    </div>
+
+    <div id="tutorial">
+        <h1>COMO JOGAR O INCRÍVEL JOGO DO LUCAS</h1>
+        <h2>> Objetivo: COMER COMER COMER (e achar a Ayla e o Rocket!)</h2>
+        <h2>> Para se mover: use as teclas "A" e "D", as setinhas do teclado ou então os botões de setinha</h2>
+        <h2>> SE ESQUIVE DAS NINAS, MANO! ELAS ROUBAM SEUS PONTOS E DIMINUEM SEU TEMPO DE JOGO!!!!</h2>
+        <h2>> Se divirta, Mano! Não se esqueça de pegar muitos lanches dos games</h2>
+        <button id="playButton">
+            JOGAR
         </button>
     </div>
 

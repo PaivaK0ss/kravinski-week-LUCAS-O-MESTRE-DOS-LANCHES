@@ -4,10 +4,10 @@
 // ===========================================
 class Player {
     constructor() {
-        this.width = 70;
-        this.height = 70;
+        this.width = 95;
+        this.height = 95;
         this.x = (CONFIG.largura / 2) - (this.width / 2);
-        this.y = 510;
+        this.y = 505;
         this.speed = CONFIG.velocidadeLucas;
         this.left = false;
         this.right = false;

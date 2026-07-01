@@ -4,6 +4,7 @@
 // ===========================================
 class Item {
     constructor(tipo) {
+        this.idItem = tipo.idItem
         this.nome = tipo.nome;
         this.imagem = tipo.imagem;
         this.pontos = tipo.pontos;
@@ -44,7 +45,8 @@ class Item {
             this.x < player.x + player.width &&
             this.x + this.width > player.x &&
             this.y < player.y + player.height &&
-            this.y + this.height > player.y
+            this.y + this.height > player.y &&
+            this.idItem
         );
     }
 }
@@ -53,29 +55,32 @@ class Item {
 // TIPOS DE ITENS
 // ===========================================
 const TIPOS_ITENS = [
-
     {
-        nome: "Cachorro Quente",
-        imagem: Assets.imagens.cachorro,
+        idItem: 1,
+        nome: "Hambúrguer",
+        imagem: Assets.imagens.hamburguer,
         pontos: 1,
         tempo: 0,
         lendario: false
     },
     {
-        nome: "Hambúrguer",
-        imagem: Assets.imagens.hamburguer,
+        idItem: 2,
+        nome: "Milk Shake",
+        imagem: Assets.imagens.milkshake,
         pontos: 2,
         tempo: 1,
         lendario: false
     },
-    {
-        nome: "Milk Shake",
-        imagem: Assets.imagens.milkshake,
+    { 
+        idItem: 3,
+        nome: "Cachorro Quente",
+        imagem: Assets.imagens.cachorro,
         pontos: 3,
         tempo: 2,
         lendario: false
     },
     {
+        idItem: 4,
         nome: "Nina",
         imagem: Assets.imagens.nina,
         pontos: -4,
@@ -83,17 +88,19 @@ const TIPOS_ITENS = [
         lendario: false
     },
     {
+        idItem: 5,
         nome: "Rocket",
         imagem: Assets.imagens.rocket,
         pontos: 10,
-        tempo: 5,
+        tempo: 10,
         lendario: true
     },
     {
+        idItem: 6,
         nome: "Ayla",
         imagem: Assets.imagens.ayla,
         pontos: 10,
-        tempo: 5,
+        tempo: 10,
         lendario: true
     }
 ];
@@ -117,7 +124,7 @@ function spawnItem() {
             continue;
         }
         // Se for lendário, apenas 1% de chance de realmente aparecer
-        if (tipo.lendario && Math.random() > 0.01) {
+        if (tipo.lendario && Math.random() > 0.02) {
             continue;
         }
         break;
@@ -140,6 +147,20 @@ function updateItems() {
         if (item.colidiu(player)) {
             Game.score += item.pontos;
             Game.timer += item.tempo;
+
+            if (item.idItem == 1) {
+                Game.hamburguerScore += 1;
+            }
+            if (item.idItem == 2) {
+                Game.milkshakeScor += 1;
+            }
+            if (item.idItem == 3) {
+                Game.hotdogScore += 1;
+            }
+            if (item.idItem == 4) {
+                Game.ninaScore += 1;
+            }
+
             // Evita tempo negativo
             if (Game.timer < 0) {
                 Game.timer = 0;
@@ -163,6 +184,9 @@ function updateItems() {
             continue;
         }
         if (item.saiuDaTela()) {
+            if(item.lendario){
+                lendarios[tipo.nome] = false;
+            }
             Game.items.splice(i, 1);
         }
     }
