@@ -70,14 +70,32 @@ canvas {
 }
 
 #hud {
+    width: 80%;
     position: absolute;
     top: 10px;
-    left: 50%;
+    left: 55%;
     transform: translateX(-50%);
+    gap: 20px;
     display: flex;
-    gap: 40px;
     font-size: 30px;
     font-weight: bold;
+}
+
+#pausar {
+    width: 75px;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 100%;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    cursor: pointer;
+    img {
+        border-radius: 100%;
+        width: 75px;
+    }
 }
 
 #controls {

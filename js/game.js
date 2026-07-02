@@ -33,6 +33,8 @@ const finalScore = document.getElementById("finalScore");
 
 const playButton = document.getElementById("playButton");
 const restartButton = document.getElementById("restartButton");
+const pausar = document.getElementById("pausar");
+const pauseImg = document.getElementById("pauseImg");
 
 const hamburguerScore = document.getElementById("hamburguerScore");
 const milkshakeScore = document.getElementById("milkshakeScore");
@@ -54,7 +56,8 @@ const Game = {
     timer: CONFIG.tempoInicial,
     record: Number(localStorage.getItem("record")) || 0,
     items: [],
-    lastSpawn: 0
+    lastSpawn: 0,
+    gameOver: false
 };
 
 recordText.textContent = Game.record;
@@ -90,7 +93,24 @@ function startGame(){
     lendarios.Ayla = false;
     scoreText.textContent = Game.score;
     timerText.textContent = Game.timer;
+    Game.gameOver = false;
 }
+
+// ===========================================
+// PAUSAR
+// ===========================================
+function pauseGame(){
+    if(Game.gameOver == false){
+        if(Game.running){
+            Game.running = false;
+            pauseImg.src = "assets/imagens/play.png"
+        } else {
+            Game.running = true;
+            pauseImg.src = "assets/imagens/pause.png"
+        }
+    }
+}
+
 
 // ===========================================
 // GAME OVER
@@ -114,6 +134,7 @@ function endGame(){
         rocketScore.textContent = "Pegou o Rocket!!!!!!"
     }
     gameOver.style.display = "flex";
+    Game.gameOver = true;
 }
 
 // ===========================================
@@ -134,3 +155,9 @@ setInterval(()=>{
 play.addEventListener("click", startTtutorial);
 playButton.addEventListener("click", startGame);
 restartButton.addEventListener("click", startGame);
+pausar.addEventListener("click", pauseGame);
+document.addEventListener("keydown", (e) => {
+    if (e.key === " ") {
+        pauseGame();
+    }
+});
