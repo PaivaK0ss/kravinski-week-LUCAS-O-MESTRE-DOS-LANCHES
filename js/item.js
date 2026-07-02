@@ -148,17 +148,21 @@ function updateItems() {
             Game.score += item.pontos;
             Game.timer += item.tempo;
 
-            if (item.idItem == 1) {
-                Game.hamburguerScore += 1;
-            }
-            if (item.idItem == 2) {
-                Game.milkshakeScor += 1;
-            }
-            if (item.idItem == 3) {
-                Game.hotdogScore += 1;
-            }
-            if (item.idItem == 4) {
-                Game.ninaScore += 1;
+            switch(item.idItem){
+                case 1:
+                    Game.hamburguerScore += 1;
+                    break;
+                case 2:
+                    Game.milkshakeScore += 1;
+                    break;
+                case 3:
+                    Game.hotdogScore += 1;
+                    break;
+                case 4:
+                    Game.ninaScore += 1;
+                    break;
+                default:
+                    break;
             }
 
             // Evita tempo negativo
@@ -169,17 +173,8 @@ function updateItems() {
             timerText.textContent = Math.floor(Game.timer);
 
             // Notificação
-            if (item.pontos > 0) {
-                UI.showNotification(
-                    "+" + item.pontos + " pontos",
-                    "#00cc66"
-                );
-            } else {
-                UI.showNotification(
-                    item.pontos + " pontos",
-                    "#b000ff"
-                );
-            }
+            UI.itemColetado(item);
+            
             Game.items.splice(i, 1);
             continue;
         }

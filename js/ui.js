@@ -2,63 +2,97 @@
 // UI
 // LUCAS, O MESTRE DOS LANCHES DOS GAMES
 // ===========================================
-
 const UI = {
     notifications: [],
-    showNotification(texto, cor = "#3498db") {
+    showNotification(texto, cor = "#00cc66") {
         this.notifications.push({
-            texto: texto,
-            cor: cor,
-            tempo: 180,
-            y: 30
+            texto,
+            cor,
+            tempoMax: 90,
+            tempo: 90
         });
     },
     update() {
         for (let i = this.notifications.length - 1; i >= 0; i--) {
             const n = this.notifications[i];
             n.tempo--;
-            if (n.y < 50) {
-                n.y += 1;
-            }
             if (n.tempo <= 0) {
                 this.notifications.splice(i, 1);
             }
         }
     },
     draw(ctx) {
-        let offset = 0;
+        let posY = 20;
         for (const n of this.notifications) {
+            const alpha = Math.min(
+                1,
+                n.tempo / 60
+            );
             ctx.save();
-            ctx.globalAlpha = Math.min(n.tempo / 60, 1);
+            ctx.globalAlpha = alpha;
+
             // Fundo
-            ctx.fillStyle = "#222";
+            ctx.fillStyle = "rgba(23,23,23,0.5)";
             ctx.fillRect(
-                CONFIG.largura - 340,
-                n.y + offset,
-                310,
-                50
+                CONFIG.largura - 330,
+                posY,
+                300,
+                60
             );
 
             // Borda
             ctx.strokeStyle = n.cor;
             ctx.lineWidth = 3;
             ctx.strokeRect(
-                CONFIG.largura - 340,
-                n.y + offset,
-                310,
-                50
+                CONFIG.largura - 330,
+                posY,
+                300,
+                60
             );
 
-            // Texto
-            ctx.fillStyle = "white";
-            ctx.font = "18px Arial";
+            // Texto principal
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "bold 15px Arial";
             ctx.fillText(
-                texto = n.texto,
-                CONFIG.largura - 320,
-                n.y + 30 + offset
+                n.texto,
+                CONFIG.largura - 310,
+                posY + 37
             );
             ctx.restore();
-            offset += 60;
+            posY += 70;
         }
+    },
+    itemColetado(item) {
+        let cor = "#00cc66";
+        let texto = "";
+        switch (item.idItem) {
+            case 1:
+                texto = "Burgão DOS GAMES +1 ponto";
+                break;
+            case 2:
+                texto = "Milkshake MANEIRO +2 pontos";
+                break;
+            case 3:
+                texto = "Dogão ÉPICO +3 ponto";
+                break;
+            case 4:
+                texto = "The Nine -4 pontos";
+                cor = "#b000ff";
+                break;
+            case 5:
+                texto = "ROCKET LENDÁRIO +10";
+                cor = "#FFD700";
+                break;
+            case 6:
+                texto = "AYLA LENDÁRIA +10";
+                cor = "#FFD700";
+                break;
+            default:
+                texto = item.nome;
+        }
+        this.showNotification(
+            texto,
+            cor
+        );
     }
 };

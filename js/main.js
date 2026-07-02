@@ -41,6 +41,8 @@ function loop(timestamp) {
     // Desenha tudo
     drawItems();
     player.draw(ctx);
+    UI.update();
+    UI.draw(ctx);
 }
 
 // Inicia o loop
