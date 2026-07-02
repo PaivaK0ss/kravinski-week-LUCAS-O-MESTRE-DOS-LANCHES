@@ -18,6 +18,10 @@ const CONFIG = {
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
+// Tamanho lógico do jogo
+canvas.width = CONFIG.largura;
+canvas.height = CONFIG.altura;
+
 // ELEMENTOS HTML
 const menu = document.getElementById("menu");
 const hud = document.getElementById("hud");
