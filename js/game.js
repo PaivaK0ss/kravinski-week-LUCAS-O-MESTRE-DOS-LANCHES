@@ -3,17 +3,6 @@
 // LUCAS, O MESTRE DOS LANCHES DOS GAMES
 // ===========================================
 
-// CONFIGURAÇÕES
-const CONFIG = {
-    largura: 900,
-    altura: 600,
-    tempoInicial: 60,
-    velocidadeLucas: 8,
-    tamanhoItem: 80,
-    velocidadeItem: 4,
-    intervaloSpawn: 800
-};
-
 // CANVAS
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
@@ -60,6 +49,7 @@ const Game = {
     timer: CONFIG.tempoInicial,
     record: Number(localStorage.getItem("record")) || 0,
     items: [],
+    explosions: [],
     lastSpawn: 0,
     gameOver: false
 };

@@ -26,6 +26,11 @@ function loop(timestamp) {
         Game.lastSpawn = 0;
     }
 
+    Game.explosions = Game.explosions.filter(e => {
+        e.update();
+        return e.life > 0;
+    });
+
     // Atualizações
     player.update();
     updateItems();
@@ -40,6 +45,7 @@ function loop(timestamp) {
     
     // Desenha tudo
     drawItems();
+    drawExplosion();
     player.draw(ctx);
     UI.update();
     UI.draw(ctx);
