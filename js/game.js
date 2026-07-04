@@ -138,7 +138,7 @@ function endGame(){
 // ===========================================
 function drawBackground() {
     ctx.drawImage(
-        Assets.imagens.fundo,
+        Assets.imagens.background,
         0,
         0,
         CONFIG.largura,

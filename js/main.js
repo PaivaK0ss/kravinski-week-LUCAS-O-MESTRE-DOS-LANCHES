@@ -51,13 +51,13 @@ function loop(timestamp) {
     );
 
     // Desenha tudo
+    drawBackground();
     drawItems();
     Explosoes.draw(ctx);
     if (!Game.cutscene) {
         player.draw(ctx);
     }
     UI.draw(ctx);
-    drawBackground();
 }
 
 // Inicia o loop
