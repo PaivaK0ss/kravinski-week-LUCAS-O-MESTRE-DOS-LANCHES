@@ -15,6 +15,11 @@ function loop(timestamp) {
         return;
     }
 
+    if (Game.cutscene) {
+        drawCherrycam();
+        return;
+    }
+
     // Tempo desde o último frame
     const delta = timestamp - ultimoTempo;
     ultimoTempo = timestamp;
@@ -32,8 +37,10 @@ function loop(timestamp) {
     });
 
     // Atualizações
-    player.update();
     updateItems();
+    Explosoes.update();
+    player.update();
+    UI.update();
 
     // Limpa a tela
     ctx.clearRect(
@@ -42,12 +49,13 @@ function loop(timestamp) {
         CONFIG.largura,
         CONFIG.altura
     );
-    
+
     // Desenha tudo
     drawItems();
-    drawExplosion();
-    player.draw(ctx);
-    UI.update();
+    Explosoes.draw(ctx);
+    if (!Game.cutscene) {
+        player.draw(ctx);
+    }
     UI.draw(ctx);
 }
 

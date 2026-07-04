@@ -1,6 +1,5 @@
 // ===========================================
-// ASSETS DO JOGO
-// LUCAS, O MESTRE DOS LANCHES DOS GAMES
+// ASSETS
 // ===========================================
 class Assets {
     static imagens = {
@@ -10,8 +9,13 @@ class Assets {
         rocket: new Image(),
         ayla: new Image(),
         nina: new Image(),
-        lucas: new Image()
+        lucas: new Image(),
+        cherrycam: new Image()
     };
+
+    static gifs = {
+        explosao: new Image()
+    }
 
     static carregar() {
         this.imagens.cachorro.src =
@@ -28,5 +32,9 @@ class Assets {
             "assets/imagens/nina.png";
         this.imagens.lucas.src =
             "assets/imagens/lucas.png";
+        this.gifs.explosao.src =
+            "assets/gifs/explosao_spritesheet.png";
+        this.imagens.cherrycam.src =
+            "assets/imagens/cherrycam.png";
     }
 }

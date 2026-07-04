@@ -9,8 +9,8 @@ class Item {
         this.imagem = tipo.imagem;
         this.pontos = tipo.pontos;
         this.tempo = tipo.tempo;
-        this.width = CONFIG.tamanhoItem;
-        this.height = CONFIG.tamanhoItem;
+        this.width = tipo.itemWidth;
+        this.height = tipo.itemHeight;
         this.x = Math.random() * (CONFIG.largura - this.width);
         this.y = -this.height;
         this.speed = CONFIG.velocidadeItem;
@@ -38,7 +38,7 @@ class Item {
         }
     }
     saiuDaTela() {
-        return this.y > CONFIG.altura;
+        return this.y > (CONFIG.altura - this.height);
     }
     colidiu(player) {
         return (
@@ -61,7 +61,9 @@ const TIPOS_ITENS = [
         imagem: Assets.imagens.hamburguer,
         pontos: 1,
         tempo: 0,
-        lendario: false
+        lendario: false,
+        itemWidth: 80,
+        itemHeight: 80
     },
     {
         idItem: 2,
@@ -69,15 +71,19 @@ const TIPOS_ITENS = [
         imagem: Assets.imagens.milkshake,
         pontos: 2,
         tempo: 1,
-        lendario: false
+        lendario: false,
+        itemWidth: 60,
+        itemHeight: 90
     },
-    { 
+    {
         idItem: 3,
         nome: "Cachorro Quente",
         imagem: Assets.imagens.cachorro,
         pontos: 3,
         tempo: 2,
-        lendario: false
+        lendario: false,
+        itemWidth: 100,
+        itemHeight: 50
     },
     {
         idItem: 4,
@@ -85,7 +91,9 @@ const TIPOS_ITENS = [
         imagem: Assets.imagens.nina,
         pontos: -4,
         tempo: -4,
-        lendario: false
+        lendario: false,
+        itemWidth: 100,
+        itemHeight: 100
     },
     {
         idItem: 5,
@@ -93,7 +101,9 @@ const TIPOS_ITENS = [
         imagem: Assets.imagens.rocket,
         pontos: 10,
         tempo: 10,
-        lendario: true
+        lendario: true,
+        itemWidth: 80,
+        itemHeight: 80
     },
     {
         idItem: 6,
@@ -101,7 +111,9 @@ const TIPOS_ITENS = [
         imagem: Assets.imagens.ayla,
         pontos: 10,
         tempo: 10,
-        lendario: true
+        lendario: true,
+        itemWidth: 80,
+        itemHeight: 80
     }
 ];
 
@@ -119,12 +131,10 @@ function spawnItem() {
         tipo = TIPOS_ITENS[
             Math.floor(Math.random() * TIPOS_ITENS.length)
         ];
-        // Se for lendário e já apareceu, sorteia outro
-        if (tipo.lendario && lendarios[tipo.nome]) {
+         if (tipo.lendario && lendarios[tipo.nome]) {
             continue;
         }
-        // Se for lendário, apenas 1% de chance de realmente aparecer
-        if (tipo.lendario && Math.random() > 0.02) {
+        if (tipo.lendario && Math.random() > 0.01) {
             continue;
         }
         break;
@@ -148,7 +158,7 @@ function updateItems() {
             Game.score += item.pontos;
             Game.timer += item.tempo;
 
-            switch(item.idItem){
+            switch (item.idItem) {
                 case 1:
                     Game.hamburguerScore += 1;
                     break;
@@ -161,6 +171,10 @@ function updateItems() {
                 case 4:
                     Game.ninaScore += 1;
                     break;
+                case 6:
+                    Game.cherrycam.x = player.x;
+                    Game.cherrycam.y = player.y;
+                    cutsceneCherrycam()
                 default:
                     break;
             }
@@ -174,15 +188,20 @@ function updateItems() {
 
             // Notificação
             UI.itemColetado(item);
-            
+
             Game.items.splice(i, 1);
             continue;
         }
         if (item.saiuDaTela()) {
-            if(item.lendario){
-                lendarios[tipo.nome] = false;
+            Explosoes.criar(
+                item.x + item.width / 2,
+                CONFIG.altura - item.height / 2
+            );
+            if (item.lendario) {
+                lendarios[item.nome] = false;
             }
             Game.items.splice(i, 1);
+            continue;
         }
     }
 }

@@ -51,7 +51,9 @@ const Game = {
     items: [],
     explosions: [],
     lastSpawn: 0,
-    gameOver: false
+    gameOver: false,
+    cutscene: false,
+    cherrycam: {x: 0, y: 0}
 };
 
 recordText.textContent = Game.record;

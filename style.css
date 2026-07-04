@@ -24,7 +24,7 @@ body {
 canvas {
     display: block;
     margin: auto;
-    background: #2dfdda;
+    background-image: url(assets/imagens/background.png);
     border: 5px solid black;
     margin-top: clamp(20px, 4vh, 60px);
     width: min(100vw, 900px);
@@ -130,7 +130,7 @@ canvas {
 =========================== */
 #controls {
     position: absolute;
-    bottom: 100px;
+    bottom: 0;
     width: 100%;
     display: none;
     justify-content: space-evenly;
