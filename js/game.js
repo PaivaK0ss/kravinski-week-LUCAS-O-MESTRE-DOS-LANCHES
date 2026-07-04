@@ -134,6 +134,19 @@ function endGame(){
 }
 
 // ===========================================
+// BACKGROUND
+// ===========================================
+function drawBackground() {
+    ctx.drawImage(
+        Assets.imagens.fundo,
+        0,
+        0,
+        CONFIG.largura,
+        CONFIG.altura
+    );
+}
+
+// ===========================================
 // TIMER
 // ===========================================
 setInterval(()=>{

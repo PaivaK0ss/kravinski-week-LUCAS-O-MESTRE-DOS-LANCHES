@@ -57,6 +57,7 @@ function loop(timestamp) {
         player.draw(ctx);
     }
     UI.draw(ctx);
+    drawBackground();
 }
 
 // Inicia o loop

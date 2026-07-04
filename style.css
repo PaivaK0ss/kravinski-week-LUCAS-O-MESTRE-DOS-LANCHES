@@ -24,7 +24,7 @@ body {
 canvas {
     display: block;
     margin: auto;
-    background-image: url(assets/imagens/background.png);
+    background-image: #83ffff;
     border: 5px solid black;
     margin-top: clamp(20px, 4vh, 60px);
     width: min(100vw, 900px);

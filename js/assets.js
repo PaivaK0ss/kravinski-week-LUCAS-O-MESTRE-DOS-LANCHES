@@ -10,7 +10,8 @@ class Assets {
         ayla: new Image(),
         nina: new Image(),
         lucas: new Image(),
-        cherrycam: new Image()
+        cherrycam: new Image(),
+        background: new Image()
     };
 
     static gifs = {
@@ -36,5 +37,7 @@ class Assets {
             "assets/gifs/explosao_spritesheet.png";
         this.imagens.cherrycam.src =
             "assets/imagens/cherrycam.png";
+        this.imagens.background.src =
+            "assets/imagens/background.png"
     }
 }
